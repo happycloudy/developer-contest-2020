@@ -7,8 +7,11 @@ export default function Media() {
     <div className="container">
       <Header/>
 
-      <div className="container" style={{height:"50vh", width:"100%"}}>
-      // insert h1, search, Results block 
+      <div className="container" >
+        <div className = " mt-5 row ">
+          <a href="https://vk.com/activ_fakulteta_cithin" class="btn btn-primary btn-lg active offset-4" role="button" aria-pressed="true">VKontakte</a>
+          <a href="https://www.instagram.com/cithin_muctr/" class="btn btn-danger btn-lg active offset-1" role="button" aria-pressed="true">Instagram</a>
+        </div>
       </div>
       
       <Footer/>
