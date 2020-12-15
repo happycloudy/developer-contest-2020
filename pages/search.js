@@ -6,13 +6,15 @@ export default function Search() {
   return (
     <div className="container">
       <Header/>
-
-      <div className="container" style={{height:"50vh", width:"100%"}}>
-      // insert h1, search, Results block 
+      <Head><title>Search | UniDB</title></Head>
+      <div className="container text-center">
+        <h1>Quick search</h1>
+        <div className="row">
+        <input type="text" class="form-control mt-5" id="searchInput" placeholder="Search!"/>
+        </div>
       </div>
       
       <Footer/>
-    
     </div>
   )
 }

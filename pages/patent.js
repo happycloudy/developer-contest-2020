@@ -9,7 +9,7 @@ export default function Search() {
     <div className="container sm-w-100" style={{width: "50vw"}}>
     <Head title="Search Result | UniDB"/>
 
-    // insert link to search result, patent
+    // insert  patent
     </div>
 
     <Footer/>

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="container">
       <Header/>
-
+      <Head><title>Main | UniDB</title></Head>
       <div className="container">
 
         <div className = "container mt-5 text-center">
