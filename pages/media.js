@@ -1,7 +1,8 @@
 import Head from './head'
-import Header from '../pages/header'
-import Footer from '../pages/footer'
-export default function Search() {
+import Footer from './footer'
+import Header from './header'
+
+export default function Media() {
   return (
     <div className="container">
       <Header/>

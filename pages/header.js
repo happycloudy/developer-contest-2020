@@ -1,39 +1,39 @@
 import Link from 'next/link'
-
+import Head from '../pages/head'
 export default  function Header() {
     return (
-
+      <div>
+        <Head/>
       <nav className="navbar navbar-expand-lg navbar-light ">
+        
         <div className="col-lg-3 col-md-12 Logo">
-          <h2>UniDB</h2>
+          <h2><a href="/">UniDB</a></h2>
         </div>
         <button className="navbar-toggler" id="navButton" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse offset-3" id="navbarNavDropdown">
+        <div className="collapse navbar-collapse offset-6" id="navbarNavDropdown">
           <ul className="navbar-nav">
+            
             <li className="nav-item">
               <Link href="/">
-                <a className="nav-link" >Главная </a>
+                <a className="nav-link" >Main </a>
               </Link>
-            </li>
-            <li>
-                <input type="text" class="form-control" placeholder="Search"></input>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 About us
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <Link href="#">
+                <Link href="/media">
                   <a className="dropdown-item" >Media</a>
                 </Link>
               </div>
             </li>
           </ul>
         </div>
-
+      
 
         <style jsx global>{`
         @media (max-width:600px) {
@@ -62,5 +62,6 @@ export default  function Header() {
         `}
         </style>
       </nav>
+      </div>
   )
 }
