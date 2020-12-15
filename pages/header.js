@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Head from '../pages/head'
-export default  function Header() {
+export default  function Header(props) {
     return (
       <div>
-        <Head/>
+        <Head title={props.title}/>
       <nav className="navbar navbar-expand-lg navbar-light ">
         
         <div className="col-lg-3 col-md-12 Logo">

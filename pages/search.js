@@ -5,8 +5,7 @@ import Header from './header'
 export default function Search() {
   return (
     <div className="container">
-      <Header/>
-      <Head><title>Search | UniDB</title></Head>
+      <Header title="Search | UniDB"/>
       <div className="container text-center">
         <h1>Quick search</h1>
         <div className="row">

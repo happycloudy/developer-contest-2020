@@ -6,8 +6,7 @@ import Footer from '../pages/footer'
 export default function Home() {
   return (
     <div className="container">
-      <Header/>
-      <Head><title>Main | UniDB</title></Head>
+      <Header title="Main | UniDB"/>
       <div className="container">
 
         <div className = "container mt-5 text-center">

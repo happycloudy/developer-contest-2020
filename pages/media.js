@@ -5,8 +5,7 @@ import Header from './header'
 export default function Media() {
   return (
     <div className="container">
-      <Header/>
-      <Head><title>Media | UniDB</title></Head>
+      <Header title="Media | UniDB"/>
       <div className="container" >
         <div className = " mt-5 row ">
           <a href="https://vk.com/activ_fakulteta_cithin" class="btn btn-primary btn-lg active offset-4" role="button" aria-pressed="true">VKontakte</a>
