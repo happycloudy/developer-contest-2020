@@ -9,6 +9,16 @@ export default function Home() {
 
       <div className="container" style={{height:"50vh", width:"100%"}}>
 
+        <div className = "container mt-5 text-center">
+          <h1>Unified patent search engine</h1>
+          <h2>Find for any patent from all sides of the world</h2>
+        </div>
+
+        <div className = "container mt-5 text-center">
+          <h1>Why we?</h1>
+          <h2>Our website provides access to all worldwide data bases.<br/>
+          With intuitive design you can easily find every patent you need.</h2>
+        </div>
       </div>
       
       <Footer/>
