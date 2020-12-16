@@ -3,6 +3,7 @@ const puppeteer = require('puppeteer')
 
 module.exports = async function GetRuHTML(req){
     try{
+        let req = "изготовление нано"
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
         await page.setViewport({
@@ -15,9 +16,10 @@ module.exports = async function GetRuHTML(req){
         await page.click("input[name='db-selection-form:dbsGrid1:1:dbsGrid1checkbox']")
         await page.waitForSelector("input[name='db-selection-form:j_idt110']")
         await page.click("input[name='db-selection-form:j_idt110']")
-        await page.waitForSelector('#j_idt89')
+        await page.waitForNavigation()
         await page.type('#j_idt89', req)
         await page.click("input[name='j_idt92']")
+        await page.waitForNavigation()
         await page.waitForSelector("a:nth-of-type(1)>div:nth-of-type(5)")
         // страница ответа
 
@@ -47,11 +49,9 @@ module.exports = async function GetRuHTML(req){
         answers = answers.filter((el) => el.header != false)
         answers.forEach((el) => console.log(el))
         await browser.close()
+        
         return answers
-
-
-
     }catch(err){
         console.log(err)
     }
-}
+}()

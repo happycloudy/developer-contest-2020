@@ -18,15 +18,19 @@ app.prepare().then(() => {
     server.use(bodyParser.urlencoded({ extended: false }))
 
     server.post('/input', async (req,res) =>{
+        let AnswersRequest = []
         let SearchRequest = "изготовление нано"
+
+
         console.log("Полученние данных с русской бд...")
         let Response = await getRuData(SearchRequest)
-        console.log("Полученние данных с американской бд бд...")
         // AnswersRequest.push(...Response)
-        
-        Response = await getEnData(SearchRequest)
+        console.log("Полученние данных с американской бд бд...")
+
+        // Response = await getEnData(SearchRequest)
         console.log(Response)
-        res.redirect("/search")
+
+        res.send(Response)
     })
 
 
