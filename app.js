@@ -17,12 +17,12 @@ app.prepare().then(() => {
     server.use(bodyParser.urlencoded({ extended: false }))
 
     server.post('/input', async (req,res) =>{
-        SearchRequest = "Химический"
-        let AnswersRequest = []
+        let SearchRequest = "Химический"
 
         let Response = await getruHTML(SearchRequest)
         // AnswersRequest.push(...Response)
-        res.render("/")
+        console.log(Response)
+        res.redirect("/search")
     })
 
 

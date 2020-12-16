@@ -9,7 +9,9 @@ export default function Search() {
       <div className="container text-center">
         <h1>Quick search</h1>
         <div className="row">
-        <input type="text" class="form-control mt-5" id="searchInput" placeholder="Search!"/>
+        <form action="/input" method="POST">
+            <input type="text" className="form-control mt-5" id="searchInput" placeholder="Search!" />
+        </form>
         </div>
       </div>
       
