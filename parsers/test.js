@@ -31,7 +31,7 @@ try {
         })
       }
       await page.click("form[name='srchForm'] > input[name='NextList"+key+"']").catch( ()=> {
-        
+        havePage = false
         console.log("Promise rejected")
       })
     }

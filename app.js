@@ -12,6 +12,7 @@ const getRuData = require('./parsers/ruParser')
 const getEnData = require('./parsers/enparser')
 
 
+
 app.prepare().then(() => {
     const server = express()
     server.set('view engine', 'jade');
@@ -33,7 +34,8 @@ app.prepare().then(() => {
         fs.unlinkSync("./rudata.json")
         fs.appendFileSync("rudata.json", JSON.stringify(Response));
 
-        res.send(Response)
+        const jsonRuData = require('./rudata.json');
+        res.send(jsonRuData)
     })
 
 
