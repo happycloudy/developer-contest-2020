@@ -33,7 +33,8 @@ module.exports = async function GetRuHTML(req){
                     header: await page.$eval("a:nth-of-type(" + i + ") > div:nth-of-type(5)", el => el.innerText)
                         .catch(() => hasPage = false),
                     patentNumber: await page.$eval("a:nth-of-type(" + i + ") > div:nth-of-type(2)", el => el.innerText)
-                        .catch(() => hasPage = false)
+                        .catch(() => hasPage = false),
+                    Database: "RUbase"
                 })
             }
             console.log(NumOfPage++)

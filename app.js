@@ -1,13 +1,14 @@
 const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
-const rp = require('request-promise');
 
 const port = 3000
+// eslint-disable-next-line no-undef
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-const getruHTML = require('./parsers/ruParser')
+const getRuData = require('./parsers/ruParser')
+const getEnData = require('./parsers/enparser')
 
 
 app.prepare().then(() => {
@@ -17,10 +18,13 @@ app.prepare().then(() => {
     server.use(bodyParser.urlencoded({ extended: false }))
 
     server.post('/input', async (req,res) =>{
-        let SearchRequest = "Химический"
-
-        let Response = await getruHTML(SearchRequest)
+        let SearchRequest = "изготовление нано"
+        console.log("Полученние данных с русской бд...")
+        let Response = await getRuData(SearchRequest)
+        console.log("Полученние данных с американской бд бд...")
         // AnswersRequest.push(...Response)
+        
+        Response = await getEnData(SearchRequest)
         console.log(Response)
         res.redirect("/search")
     })

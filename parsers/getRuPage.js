@@ -33,7 +33,8 @@ module.exports = async function getRuPage(req){
           application: await page.$eval("td:nth-of-type(1) > p:nth-of-type(1) > b", el => el.innerText),
           publDate: await page.$eval("a[title^='Официальная публикация в формате PDF (открывается в отдельно']", el => el.innerText),
           author1: await page.$$eval("td#bibl > p:nth-of-type(1) > b", els => els.map( el => el.textContent )),
-          author2: await page.$$eval("td#bibl > p:nth-of-type(2) > b", els => els.map( el => el.textContent ))
+          author2: await page.$$eval("td#bibl > p:nth-of-type(2) > b", els => els.map( el => el.textContent )),
+          abstract: await page.$eval("#Abs p:nth-of-type(2)", el => el.innerText)
         }
         await browser.close()
         console.log(info)
