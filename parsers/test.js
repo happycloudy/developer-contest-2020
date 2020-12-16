@@ -20,7 +20,9 @@ try {
 
 
     let headers = []
-    while(){
+    let havePage = true
+    let key = 2
+    while(havePage){
       for (let i = 2; i <= 51; i++) {
         headers.push({
           header: await page.$eval("tr:nth-of-type("+ i +") > td:nth-of-type(4) > a", el => el.innerText) ,
@@ -28,7 +30,10 @@ try {
           Database: "USbase"
         })
       }
-      await page.click("form[name='srchForm'] > input[name='NextList2']")
+      await page.click("form[name='srchForm'] > input[name='NextList"+key+"']").catch( ()=> {
+        
+        console.log("Promise rejected")
+      })
     }
     console.log(headers)
     await page.screenshot({ path: 'mouse_click.png' })

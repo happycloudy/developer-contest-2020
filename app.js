@@ -1,6 +1,7 @@
 const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
+const fs = require("fs");
 
 const port = 3000
 // eslint-disable-next-line no-undef
@@ -25,10 +26,12 @@ app.prepare().then(() => {
         console.log("Полученние данных с русской бд...")
         let Response = await getRuData(SearchRequest)
         // AnswersRequest.push(...Response)
-        console.log("Полученние данных с американской бд бд...")
-
+        // console.log("Полученние данных с американской бд бд...")
         // Response = await getEnData(SearchRequest)
-        console.log(Response)
+        console.log(Response[0])
+
+        fs.unlinkSync("./rudata.json")
+        fs.appendFileSync("rudata.json", JSON.stringify(Response));
 
         res.send(Response)
     })

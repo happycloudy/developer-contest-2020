@@ -47,7 +47,8 @@ module.exports = async function GetRuHTML(req){
         }
 
         answers = answers.filter((el) => el.header != false)
-        answers.forEach((el) => console.log(el))
+        answers = answers.filter((el) => el.header != false)
+        // answers.forEach((el) => console.log(el))
         await browser.close()
         return answers
 
