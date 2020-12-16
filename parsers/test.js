@@ -20,15 +20,17 @@ try {
 
 
     let headers = []
-    for (let i = 2; i <= 51; i++) {
-      headers.push({
-        header: await page.$eval("tr:nth-of-type("+ i +") > td:nth-of-type(4) > a", el => el.innerText) ,
-        patentNumber: await page.$eval("tr:nth-of-type("+ i+") > td:nth-of-type(2) > a", el => el.innerText) ,
-        Database: "USbase"
-      })
+    while(){
+      for (let i = 2; i <= 51; i++) {
+        headers.push({
+          header: await page.$eval("tr:nth-of-type("+ i +") > td:nth-of-type(4) > a", el => el.innerText) ,
+          patentNumber: await page.$eval("tr:nth-of-type("+ i+") > td:nth-of-type(2) > a", el => el.innerText) ,
+          Database: "USbase"
+        })
+      }
+      await page.click("form[name='srchForm'] > input[name='NextList2']")
     }
     console.log(headers)
-    await page.click("form[name='srchForm'] > input[name='NextList2']")
     await page.screenshot({ path: 'mouse_click.png' })
 
     await browser.close()

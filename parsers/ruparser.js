@@ -9,6 +9,7 @@ module.exports = async function GetRuHTML(req){
             width: 1280,
             height: 800
         })
+        page.setDefaultNavigationTimeout(0)
         await page.goto("https://fips.ru/iiss/")
         await page.click('.arrow_2.top')
         await page.click("input[name='db-selection-form:dbsGrid1:0:dbsGrid1checkbox']")
@@ -19,6 +20,7 @@ module.exports = async function GetRuHTML(req){
         await page.type('#j_idt89', req)
         await page.click("input[name='j_idt92']")
         await page.waitForSelector("a:nth-of-type(1)>div:nth-of-type(5)")
+
         // страница ответа
 
         let answers = []
