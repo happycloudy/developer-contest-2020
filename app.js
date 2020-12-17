@@ -1,6 +1,7 @@
 const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
+const fs = require('fs')
 
 const port = 3000
 // eslint-disable-next-line no-undef
@@ -30,7 +31,8 @@ app.prepare().then(() => {
         // Response = await getEnData(SearchRequest)
         // let Response = await getRuPatent("2588239")
         // console.log(Response)
-
+        // fs.appendFileSync("data.json", Response)
+        // Response = fs.readFileSync("data.json")
         res.send(Response)
     })
 

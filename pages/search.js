@@ -40,12 +40,9 @@ export default class Search extends React.Component {
         <div className="container text-center">
           <h1>Quick search</h1>
           <div className="row">
-
             <SearchForm GetData={this.getData}/>
           </div>
-
           <Data Data={this.state.data}/>
-
         </div>
         <Footer/>
       </div>
