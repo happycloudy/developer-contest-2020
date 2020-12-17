@@ -1,7 +1,6 @@
 const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
-const fs = require("fs");
 
 const port = 3000
 // eslint-disable-next-line no-undef
