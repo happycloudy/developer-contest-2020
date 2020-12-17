@@ -5,6 +5,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import SearchForm from '../components/Searchform'
 import Data from '../components/Data'
+import qs from 'qs'
 
 export default class Search extends React.Component {
   constructor(props){
@@ -17,15 +18,21 @@ export default class Search extends React.Component {
     e.preventDefault()
     let req = e.target.elements.search.value
     let response
-    try {
-      response = await axios.post('http://localhost:3000/input',{
-        searchName: req
-        // "изготовление нано"
+    // try {
+    //   response = await axios.post('http://localhost:3000/input',{searchName: req});
+    // } catch (error) {
+    //   console.error('error');
+    // }
+    let data
+    await axios({
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: qs.stringify( {searchname: req}),
+      url: 'http://localhost:3000/input',
+    })
+      .then(function (response) {
+        data = response.data
       });
-    } catch (error) {
-      console.error('error');
-    }
-    let data = response.data
 
     this.setState({
       data: data

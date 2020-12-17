@@ -15,14 +15,16 @@ const getRuPatent = require('./parsers/getRuPage')
 
 app.prepare().then(() => {
     const server = express()
-    server.set('view engine', 'jade');
+    // server.set('view engine', 'jade');
 
     server.use(bodyParser.urlencoded({ extended: false }))
 
     server.post('/input', async (req,res) =>{
         let AnswersRequest = []
-        let SearchRequest = "изготовление нано"
+        let SearchRequest = req.body.searchname
 
+
+        console.log("Поисковый запрос:"+SearchRequest)
         console.log("Полученние данных с русской бд...")
         let Response = JSON.stringify(await getRuData(SearchRequest))
         // AnswersRequest.push(...Response)
@@ -31,11 +33,13 @@ app.prepare().then(() => {
         // Response = await getEnData(SearchRequest)
         // let Response = await getRuPatent("2588239")
         // console.log(Response)
-        // fs.appendFileSync("data.json", Response)
         // Response = fs.readFileSync("data.json")
         res.send(Response)
     })
 
+    server.post('/getruinfo', async (req,res) =>{
+
+    })
 
     server.get('*', (req, res) => {
         return handle(req, res)
