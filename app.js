@@ -23,24 +23,16 @@ app.prepare().then(() => {
         let AnswersRequest = []
         let SearchRequest = "изготовление нано"
 
-
         console.log("Полученние данных с русской бд...")
-        let Response = await getRuData(SearchRequest)
+        let Response = JSON.stringify(await getRuData(SearchRequest))
         // AnswersRequest.push(...Response)
 
         // console.log("Полученние данных с американской бд...")
         // Response = await getEnData(SearchRequest)
-        
         // let Response = await getRuPatent("2588239")
-        console.log(Response)
+        // console.log(Response)
 
-
-        // fs.unlinkSync("./rudata.json")
-        // fs.appendFileSync("rudata.json", JSON.stringify(Response));
-        fs.appendFileSync("patent.json", JSON.stringify(Response));
-
-        const jsonRuData = require('./patent.json');
-        res.send(jsonRuData)
+        res.send(Response)
     })
 
 
