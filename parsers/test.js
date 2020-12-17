@@ -3,7 +3,6 @@ const puppeteer = require('puppeteer')
 try {
   (async () => {
     let req = "atmosphere method cleaning".split(" ").join("+AND+")
-    console.log(req)
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.setViewport({
@@ -23,22 +22,26 @@ try {
     let havePage = true
     let key = 2
     while(havePage){
+      await page.waitForSelector("tr:nth-of-type(2) > td:nth-of-type(4) > a")
       for (let i = 2; i <= 51; i++) {
         headers.push({
-          header: await page.$eval("tr:nth-of-type("+ i +") > td:nth-of-type(4) > a", el => el.innerText) ,
-          patentNumber: await page.$eval("tr:nth-of-type("+ i+") > td:nth-of-type(2) > a", el => el.innerText) ,
+          header: await page.$eval("tr:nth-of-type("+ i +") > td:nth-of-type(4) > a", el => el.innerText).catch( () => havePage = false) ,
+          patentNumber: await page.$eval("tr:nth-of-type("+ i+") > td:nth-of-type(2) > a", el => el.innerText).catch( () => havePage = false) ,
           Database: "USbase"
         })
       }
-      await page.click("form[name='srchForm'] > input[name='NextList"+key+"']").catch( ()=> {
-        havePage = false
-        console.log("Promise rejected")
-      })
+      await page.click("form[name='srchForm'] > input[name='NextList"+key+"']").catch( ()=> {havePage = false})
+      await page.waitForSelector("form[name='srchForm'] > input[name='NextList"+key +"']").catch( ()=> { console.log("Promise rejected on wait")})
+      key++
     }
-    console.log(headers)
-    await page.screenshot({ path: 'mouse_click.png' })
+    headers = headers.filter((el) => el.header != false)
+    headers.forEach((el) => console.log(el))
 
+
+    await page.screenshot({ path: 'mouse_click.png' })
     await browser.close()
+
+    return headers
   })()
 } catch (err) {
   console.error(err)

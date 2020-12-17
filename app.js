@@ -10,7 +10,7 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 const getRuData = require('./parsers/ruParser')
 const getEnData = require('./parsers/enparser')
-
+const getRuPatent = require('./parsers/getRuPage')
 
 
 app.prepare().then(() => {
@@ -27,14 +27,19 @@ app.prepare().then(() => {
         console.log("Полученние данных с русской бд...")
         let Response = await getRuData(SearchRequest)
         // AnswersRequest.push(...Response)
-        // console.log("Полученние данных с американской бд бд...")
+
+        // console.log("Полученние данных с американской бд...")
         // Response = await getEnData(SearchRequest)
-        console.log(Response[0])
+        
+        // let Response = await getRuPatent("2588239")
+        console.log(Response)
 
-        fs.unlinkSync("./rudata.json")
-        fs.appendFileSync("rudata.json", JSON.stringify(Response));
 
-        const jsonRuData = require('./rudata.json');
+        // fs.unlinkSync("./rudata.json")
+        // fs.appendFileSync("rudata.json", JSON.stringify(Response));
+        fs.appendFileSync("patent.json", JSON.stringify(Response));
+
+        const jsonRuData = require('./patent.json');
         res.send(jsonRuData)
     })
 

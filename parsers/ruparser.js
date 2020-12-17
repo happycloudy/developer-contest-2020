@@ -41,7 +41,7 @@ module.exports = async function GetRuHTML(req){
             console.log(NumOfPage++)
             await page.click(".modern-page-next") // переключение страницы
             if (hasPage == false) break
-            await page.screenshot({ path: 'mouse_click.png' })
+            await page.screenshot({ path: 'lastEupage.png' })
             await page.waitForNavigation()
             await page.waitForSelector("a:nth-of-type(1)>div:nth-of-type(5)")
         }

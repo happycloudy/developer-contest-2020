@@ -25,7 +25,7 @@ module.exports = async function getRuPage(req){
         await page.screenshot({ path: 'mouse_click.png' })
         // страница ответа
         await page.waitForSelector("#mainDoc .tp:nth-child(2) tr:nth-of-type(1) [target]")
-            
+
         let info = {
           patentNumber: await page.$eval("#mainDoc .tp:nth-child(2) tr:nth-of-type(1) [target]", el => el.innerText.replace(/\s+/g, '')),
           country: await page.$eval("td:nth-of-type(2) > div:nth-of-type(2)", el => el.innerText),
@@ -38,7 +38,7 @@ module.exports = async function getRuPage(req){
         }
         await browser.close()
         console.log(info)
-    
+
         return info
     }catch(err){
         console.log(err)
