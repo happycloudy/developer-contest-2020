@@ -7,11 +7,11 @@ export default function Data(props){
           {console.log(props.Data)}
           {props.Data?(
               props.Data.map( ({ header, patentNumber }) => (
-                <a>
-                  <li key={patentNumber}>
-                  {header}
-                  <br />
-                  {patentNumber}
+                <a href="/patent">
+                  <li key={patentNumber} class="text-left">
+                  <hr/>
+                  <h4>{header}</h4>
+                  <h5>{patentNumber}</h5>
                   </li>
                 </a>
             ))
