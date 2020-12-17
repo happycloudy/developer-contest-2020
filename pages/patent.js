@@ -8,7 +8,7 @@ export default function Search() {
     <Header title="Main | UniDB"/>
     <div  className="container sm-w-100" id="patent" style={{width: "50vw"}}>
       <a href="/search" className="text-left"><h5>Go back</h5></a>
-      <jsonout/>
+      <Jsonout/>
     </div>
 
     <Footer/>
@@ -17,24 +17,18 @@ export default function Search() {
   )
 }
 
-function jsonout(){
-    let jsonData = require('../rudata.json');
-  //console.log(jsonData);
-  let str = ' ';
-  let k=1;
-    /*for (let i = 0; i< jsonData.length; i++  ) {
-      if(jsonData[i].patentNumber =='94039156') k=i;
-    }*/
+function Jsonout(){
+    let jsonData = require('../patent.json');
     return(
-      <div className="container">
-      <div id="number" className="text-left">{jsonData[k].patentNumber}</div>
-      <div id="country" className="text-left"></div>
-      <div id="mpk" className="text-left"></div>
-      <div id="application" className="text-left"></div>
-      <div id="publicationDate" className="text-left"></div>
-      <div id="authors" className="text-left"></div>
-      <div id="Name" className="text-center"></div>
-      <div id="abstract" className="text-justify"></div>
-    </div>
+      <div className="container mt-5">
+      <div id="number" className="text-left"><b>Patent Number: </b>{jsonData.patentNumber}</div>
+      <div id="country" className="text-left"><b>Country: </b>{jsonData.country}</div>
+      <div id="mpk" className="text-left"><b>Current International Classification: </b>{jsonData.mpk}</div>
+      <div id="application" className="text-left"><b>App.: </b>{jsonData.application}</div>
+      <div id="publicationDate" className="text-left"><b>Publ.: </b>{jsonData.publDate}</div>
+      <div id="authors" className="text-left"><b>Authors: </b>{jsonData.author1}<br/>{jsonData.author2}</div>
+      <div id="Name" className="text-center mt-5"> <h4>НАЗВАНИЕ IMПАТЕНТА</h4></div>
+      <div id="abstract" className="text-justify">{jsonData.abstract}</div>
+      </div>
     )
 }
