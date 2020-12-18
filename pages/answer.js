@@ -13,11 +13,12 @@ export default function Search( {data} ) {
 
       <ul className="mt-5" id="list" style={{display:"none"}}>
         {data.map( ({ header, patentNumber }) => (
-          <a>
-            <li key={patentNumber}>
-            {header}
+          <a className="text-dark">
+            <li className="text-left" key={patentNumber}>
+            <hr/>
+            <h4>{header}</h4>
             <br />
-            {patentNumber}
+            <h5>{patentNumber}</h5>
             </li>
           </a>
         ))}

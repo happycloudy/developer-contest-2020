@@ -13,7 +13,7 @@ export default class Search extends React.Component {
   render(){
     return (
       <div  className="container sm-w-100" id="patent" style={{width: "50vw"}}>
-        <a className="text-left" onClick={this.props.goBack}><h5>Go back</h5></a>
+        <a href="#" className="text-left text-dark" onClick={this.props.goBack}><h5>Go back</h5></a>
         <Patentfound
         patentNumber={this.props.Info.patentNumber}
         country={this.props.Info.country}
@@ -25,7 +25,6 @@ export default class Search extends React.Component {
         abstract={this.props.Info.abstract}
         patentName={this.props.Info.patentName}
          />
-
       </div>
     )
   }

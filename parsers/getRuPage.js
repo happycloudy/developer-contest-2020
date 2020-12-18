@@ -41,7 +41,7 @@ module.exports = async function getRuPage(req){
         info.patentName = await page.$eval("[href] .td:nth-of-type(5)", el => el.innerText)
         info.publDate = await page.$eval("[href] .td:nth-of-type(3)", el => el.innerText)
         await browser.close()
-        console.log(info)
+        //console.log(info)
         return info
     }catch(err){
         console.log(err)

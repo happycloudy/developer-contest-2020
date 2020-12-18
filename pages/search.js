@@ -75,7 +75,7 @@ export default class Search extends React.Component {
       },
       isPatent: !this.state.isPatent
     })
-    console.log(this.state.info)
+    //console.log(this.state.info)
   }
 
   goBack = () => {
