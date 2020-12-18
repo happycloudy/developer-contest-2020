@@ -1,34 +1,34 @@
 import React, {useEffect, useState} from 'react'
+import Patent from '../pages/patent'
 
+export default class Data extends React.Component{
+  constructor(props){
+    super(props)
 
-export default function Data(props){
+  }
+
+  render(){
     return(
-        <ul className="mt-5" id="list" >
-          {props.Data?(
-              props.Data.map( ({ header, patentNumber }) => (
-                <a href="/patent">
-                  <li key={patentNumber} class="text-left">
-                  <hr/>
-                  <h4>{header}</h4>
-                  <h5>{patentNumber}</h5>
-                  </li>
-                </a>
-            ))
-          ): (
-              <div> Введите запрос </div>
-          )
 
-          }
-        </ul>
-    )
+      <ul className="mt-5" id="list" >
+        {this.props.Data && !this.props.isPatent?(
+            this.props.Data.map( ({ header, patentNumber }) => (
+              <a href="/patent" name={patentNumber} onClick={this.props.getInfo}>
+                <li key={patentNumber} name={patentNumber} class="text-left">
+                <hr/>
+                <h4 name={patentNumber}>{header}</h4>
+                <h5 name={patentNumber}>{patentNumber}</h5>
+                </li>
+              </a>
+          ))
+        ):(
+            this.props.isPatent && <Patent
+              Info={this.props.Info}
+              goBack={this.props.goBack}
+            />
+        )
+        }
+      </ul>
+  )
+  }
 }
-
-// props.Data.map( ({ header, patentNumber }) => (
-//     <a>
-//       <li key={patentNumber}>
-//       {header}
-//       <br />
-//       {patentNumber}
-//       </li>
-//     </a>
-// ))

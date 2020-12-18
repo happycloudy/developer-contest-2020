@@ -15,11 +15,12 @@ export default class SearchForm extends React.Component{
     }
     render(){
       return(
-        <form onSubmit={this.props.GetData}>
+        <form className="container"  onSubmit={this.props.GetData}>
           <label>
-            <input type="text" name="search" className="form-control mt-5" id="searchInput"/>
+            <input className="d-flex justify-content-left" type="text" name="search" className="form-control mt-5" id="searchInput"/>
           </label>
-          <input type="submit" value="Отправить" />
+          <br></br>
+          <input className=" justify-content-center" type="submit" value="Отправить" />
         </form>
       )
     }

@@ -21,24 +21,28 @@ app.prepare().then(() => {
 
     server.post('/input', async (req,res) =>{
         let AnswersRequest = []
+
+
         let SearchRequest = req.body.searchname
-
-
-        console.log("Поисковый запрос:"+SearchRequest)
+        console.log("Поисковый запрос: "+SearchRequest)
         console.log("Полученние данных с русской бд...")
         let Response = JSON.stringify(await getRuData(SearchRequest))
+        
+        // Response = await getEnData(SearchRequest)
         // AnswersRequest.push(...Response)
 
         // console.log("Полученние данных с американской бд...")
-        // Response = await getEnData(SearchRequest)
-        // let Response = await getRuPatent("2588239")
+
         // console.log(Response)
         // Response = fs.readFileSync("data.json")
         res.send(Response)
     })
 
-    server.post('/getruinfo', async (req,res) =>{
-
+    server.post('/patent', async (req,res) =>{
+        let SearchRequest = req.body.patentnum
+        console.log("Запрос на страницу: "+SearchRequest)
+        let Response = await getRuPatent("2588239")
+        res.send(Response)
     })
 
     server.get('*', (req, res) => {
