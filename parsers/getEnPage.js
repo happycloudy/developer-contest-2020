@@ -26,7 +26,8 @@ module.exports = async function getEnPage(req){
           application: await page.$eval("tr:nth-of-type(5) > td > b", el => el.innerText) + " "+await page.$eval("tr:nth-of-type(6) > td > b", el => el.innerText) ,
           publDate: await page.$eval("tr:nth-of-type(2) > td:nth-of-type(2) > b", el => el.innerText),
           author1: await page.$eval("table:nth-of-type(3) > tbody > tr:nth-of-type(1) > td", el=> el.innerText),
-          abstract: await page.$eval("body > p:nth-of-type(1)", el => el.innerText)
+          abstract: await page.$eval("body > p:nth-of-type(1)", el => el.innerText),
+          patentName: await page.$eval("body > font", el => el.innerText)
         }
         await browser.close()
         console.log(info)
@@ -35,4 +36,4 @@ module.exports = async function getEnPage(req){
     }catch(err){
         console.log(err)
     }
-}()
+}

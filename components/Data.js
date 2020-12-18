@@ -12,12 +12,12 @@ export default class Data extends React.Component{
 
       <ul className="mt-5" id="list" >
         {this.props.Data && !this.props.isPatent?(
-            this.props.Data.map( ({ header, patentNumber }) => (
-              <a href="/patent" className="text-dark" name={patentNumber} onClick={this.props.getInfo}>
-                <li key={patentNumber} name={patentNumber} className="text-left">
-                <hr/>
-                <h4 name={patentNumber}>{header}</h4>
-                <h5 name={patentNumber}>{patentNumber}</h5>
+            this.props.Data.map( ({ header, patentNumber ,Database}) => (
+              <a href="/patent" className="text-dark" name={patentNumber} title={Database} onClick={this.props.getInfo}>
+                <li key={patentNumber} name={patentNumber} title={Database}  className="text-left">
+                <hr style={{border: "2px solid black", backgroundColor: "black"}}/>
+                <h4 name={patentNumber} title={Database} >{header}</h4>
+                <h5 name={patentNumber} title={Database} >{patentNumber}</h5>
                 </li>
               </a>
           ))

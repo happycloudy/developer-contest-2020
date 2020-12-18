@@ -50,11 +50,13 @@ export default class Search extends React.Component {
   getInfo = async (e) => {
     e.preventDefault()
     let req = e.target.getAttribute("name")
+    let database = e.target.getAttribute("title")
+    console.log(database)
     let data
     await axios({
       method: 'POST',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      data: qs.stringify( {patentnum: req}),
+      data: qs.stringify( {patentnum: req, database: database}),
       url: 'http://localhost:3000/patent',
     })
       .then(function (response) {
@@ -75,7 +77,7 @@ export default class Search extends React.Component {
       },
       isPatent: !this.state.isPatent
     })
-    //console.log(this.state.info)
+    console.log(this.state.info)
   }
 
   goBack = () => {
